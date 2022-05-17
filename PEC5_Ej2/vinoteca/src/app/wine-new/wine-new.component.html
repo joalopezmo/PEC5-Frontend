@@ -1,0 +1,37 @@
+<h3>Create wine</h3>
+
+<form (ngSubmit)="createWine(wineForm)" #wineForm="ngForm">
+    <div class="wine-name">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" placeholder="Enter name"  minlength="3" #wineName="ngModel" [(ngModel)]="wine.name">
+        <div *ngIf="wineName.dirty && wineName?.errors?.['required']" class="alert alert-danger">
+            Name is required
+        </div>
+        <div *ngIf="wineName?.errors?.['minlength']" class="alert alert-danger">
+            Name must be at least 3 characters long
+        </div>
+    </div>
+    <div class="wine-price">
+        <label for="price">Price</label>
+        <input type="number"   id="price" name= "price" placeholder="Enter price" required #winePrice="ngModel" [(ngModel)]="wine.price" (ngModelChange)="setWinePrice($event)">
+        <div *ngIf="winePrice.invalid && winePrice.dirty" class="alert alert-danger">
+            <div *ngIf="winePrice?.errors?.['required']">
+                Price is required
+            </div>
+        </div>
+    </div>
+    <div class="wine-imageUrl">
+        <label for="imageUrl">Image URL</label>
+        <input type="url"id="imageUrl" name="imageUrl" placeholder="Enter image URL" #wineUrl="ngModel" pattern="(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?"[(ngModel)]="wine.imageUrl">
+        <div *ngIf="wineUrl.invalid && wineUrl.dirty" class="alert alert-danger">
+            <div *ngIf="wineUrl?.errors?.['pattern']">
+                Image URL is not valid
+            </div>
+        </div>
+    </div>
+    <div class="wine-isOnSale">
+        <label for="isOnSale">Is on sale</label>
+        <input type="checkbox"  id="isOnSale" name="isOnSale" placeholder="Enter is on sale" [(ngModel)]="wine.isOnSale">
+    </div>
+    <button type="submit" class="btn btn-primary">Create</button>
+</form>

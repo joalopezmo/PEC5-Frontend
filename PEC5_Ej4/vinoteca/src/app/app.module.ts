@@ -1,20 +1,20 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import{FormsModule} from '@angular/forms';
 import { WineitemComponent } from './wineitem/wineitem.component';
-import { WineNewComponent } from './wine-new/wine-new.component';
+import { FormCreatorComponent } from './form-creator/form-creator.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     WineitemComponent,
-    WineNewComponent
+    FormCreatorComponent
   ],
   imports: [
-    BrowserModule, 
-    FormsModule
+    BrowserModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

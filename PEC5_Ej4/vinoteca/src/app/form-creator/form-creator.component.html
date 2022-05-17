@@ -1,0 +1,45 @@
+<h2>Create Stock Form</h2>
+
+<div class="form-group">
+    <form [formGroup]="wineForm" (ngSubmit)="onSubmit()">
+        <div class="wine-name">
+            <input type="text"
+                    placeholder="Wine Name"
+                    name="wineName"
+                    formControlName="name">
+        </div>
+        <div class="wine-price">
+            <input type="number"
+                    placeholder="Price"
+                    name="price"
+                    formControlName="price">
+        </div>
+        <div class="wine-imageUrl">
+            <input type="url"
+                    placeholder="Image URL"
+                    name="imageUrl"
+                    formControlName="imageUrl">
+        </div>
+        <div class="wine-isOnSale">
+
+            <input type="checkbox"
+                    name="isOnSale"
+                    formControlName="isOnSale">
+            <label for="isOnSale">On Sale</label>
+        </div>
+
+
+
+        <button (click)="onSubmit()">Submit</button>
+
+
+
+
+
+    </form>
+
+    
+</div>
+
+<p>Form Control value: {{ wineForm.value | json }}</p>    
+<p>Form Control status: {{ wineForm.status | json }}</p>
